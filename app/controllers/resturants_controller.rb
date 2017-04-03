@@ -13,6 +13,10 @@ class ResturantsController < ApplicationController
     redirect_to '/resturants'
   end
 
+  def show
+    @resturant = Resturant.find(params[:id])
+  end
+
   private
 
   def resturant_params
