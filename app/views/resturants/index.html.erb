@@ -1,6 +1,6 @@
 <% if @resturants.any? %>
   <% @resturants.each do |resturant| %>
-  <h2><%= link_to resturant.name, resturant_path(resturant) %></h2>
+  <h2><%= link_to resturant.name, resturant_path(resturant) %></h2> <p><%= link_to "Edit #{resturant.name}", edit_resturant_path(resturant) %></p>
   <% end %>
 <% else %>
   No resturants yet
