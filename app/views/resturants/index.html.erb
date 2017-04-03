@@ -1,0 +1,9 @@
+<% if @resturants.any? %>
+  <% @resturants.each do |resturant| %>
+  <h2><%= resturant.name %></h2>
+  <% end %>
+<% else %>
+  No resturants yet
+<% end %>
+
+<a href='#'>Add a resturant</a>
