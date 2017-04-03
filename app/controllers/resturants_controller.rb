@@ -17,10 +17,21 @@ class ResturantsController < ApplicationController
     @resturant = Resturant.find(params[:id])
   end
 
+  def edit
+    @resturant = Resturant.find(params[:id])
+  end
+
+  def update
+    @resturant = Resturant.find(params[:id])
+    @resturant.update(resturant_params)
+
+    redirect_to '/resturants'
+  end
+
   private
 
   def resturant_params
-    params.require(:resturant).permit(:name)
+    params.require(:resturant).permit(:name, :description)
   end
 
 end
