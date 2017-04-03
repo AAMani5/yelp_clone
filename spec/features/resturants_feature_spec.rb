@@ -35,4 +35,16 @@ feature 'resturants' do
     end
   end
 
+  context 'viewing resturants' do
+
+    let!(:kfc) {Resturant.create(name: 'KFC')}
+
+    scenario 'lets a user view a resturant' do
+      visit '/resturants'
+      click_link 'KFC'
+      expect(page).to have_content 'KFC'
+      expect(current_path).to eq "/resturants/#{kfc.id}"
+    end
+  end
+
 end
