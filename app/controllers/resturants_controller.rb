@@ -9,8 +9,13 @@ class ResturantsController < ApplicationController
   end
 
   def create
-    Resturant.create(resturant_params)
-    redirect_to '/resturants'
+    @resturant = Resturant.new(resturant_params)
+    if @resturant.save
+      redirect_to resturants_path
+    else
+      render 'new'
+    end
+
   end
 
   def show
