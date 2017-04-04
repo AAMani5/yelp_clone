@@ -1,6 +1,8 @@
 YelpClone::Application.routes.draw do
 
-  resources :resturants
+  resources :resturants do
+    resources :reviews
+  end
 
   # get 'resturants' => 'resturants#index'
   # The priority is based upon order of creation: first created -> highest priority.
