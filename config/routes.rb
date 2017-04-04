@@ -1,5 +1,6 @@
 YelpClone::Application.routes.draw do
 
+  devise_for :users
   resources :resturants do
     resources :reviews
   end
