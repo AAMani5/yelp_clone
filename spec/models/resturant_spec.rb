@@ -14,4 +14,9 @@ describe Resturant, type: :model do
     expect(resturant).to have(1).error_on(:name)
   end
 
+  it 'has many reviews' do
+    resturant = Resturant.create(name: "Moe's Tavern")
+    expect(resturant).to have_many :reviews
+  end
+
 end
