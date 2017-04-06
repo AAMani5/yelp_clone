@@ -50,6 +50,7 @@ gem 'omniauth-facebook'
 
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'rspec-collection_matchers'
 end
