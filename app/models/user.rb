@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
   has_many :resturants, dependent: :destroy
+  has_many :reviewed_resturants, through: :reviews, source: :resturant
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,5 +18,9 @@ class User < ActiveRecord::Base
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  def has_reviewed?(resturant)
+    reviewed_resturants.include? resturant
   end
 end
