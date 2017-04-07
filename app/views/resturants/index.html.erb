@@ -4,8 +4,13 @@
   <% resturant.reviews.each do |review| %>
   <%= review.thoughts %>
   <% end %>
-  <p><%= link_to "Edit #{resturant.name}", edit_resturant_path(resturant) %></p>
-  <p><%= link_to "Delete #{resturant.name}", resturant_path(resturant), method: :delete %></p>
+
+  <% if current_user && resturant.user_id == current_user.id %>
+    <p><%= link_to "Edit #{resturant.name}", edit_resturant_path(resturant) %></p>
+    <p><%= link_to "Delete #{resturant.name}", resturant_path(resturant), method: :delete %></p>
+  <% end %>
+
+
   <p><%= link_to "Review #{resturant.name}", new_resturant_review_path(resturant) %></p>
   <% end %>
 <% else %>
