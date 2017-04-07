@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
   end
 
   def has_reviewed?(resturant)
-    reviewed_resturants.include? resturant
+    self.reviewed_resturants.include? resturant
   end
 end
