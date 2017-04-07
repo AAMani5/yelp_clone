@@ -110,7 +110,7 @@ end
 context 'editing resturants' do
 
   before  do
-    Resturant.create name: 'KFC', description: 'Deep fried goodness', id: 1
+    Resturant.create name: 'Burger King', description: 'Deep fried goodness', id: 1
     visit('/')
     click_link('Sign up')
     fill_in('Email', with: 'test@example.com')
@@ -119,8 +119,12 @@ context 'editing resturants' do
     click_button('Sign up')
   end
 
-  scenario 'let a user edit a restaurant' do
+  scenario 'let a user edit a restaurant created by him/her' do
     visit '/resturants'
+    click_link 'Add a resturant'
+    fill_in 'Name', with: 'KFC'
+    click_button 'Create Resturant'
+    expect(page).to have_content 'KFC'
     click_link 'Edit KFC'
     fill_in 'Name', with: 'Kentucky Fried Chicken'
     fill_in 'Description', with: 'Deep fried goodness'
@@ -128,7 +132,11 @@ context 'editing resturants' do
     click_link 'Kentucky Fried Chicken'
     expect(page).to have_content 'Kentucky Fried Chicken'
     expect(page).to have_content 'Deep fried goodness'
-    expect(current_path).to eq '/resturants/1'
+  end
+
+  scenario 'dose not allow user to edit random resturant' do
+    visit('/resturants')
+    expect(page).not_to have_link 'Edit Burger King'
   end
 
 end
@@ -136,7 +144,7 @@ end
 context 'deleting resturants' do
 
   before  do
-    Resturant.create name: 'KFC', description: 'Deep fried goodness', id: 1
+    Resturant.create name: 'Burger King', description: 'Deep fried goodness', id: 1
     visit('/')
     click_link('Sign up')
     fill_in('Email', with: 'test@example.com')
@@ -145,11 +153,20 @@ context 'deleting resturants' do
     click_button('Sign up')
   end
 
-  scenario 'removes a resturant when a user clicks a delete link' do
+  scenario 'removes a resturant(created by the user) when user clicks a delete link' do
     visit '/resturants'
+    click_link 'Add a resturant'
+    fill_in 'Name', with: 'KFC'
+    click_button 'Create Resturant'
+    expect(page).to have_content 'KFC'
     click_link 'Delete KFC'
     expect(page).not_to have_content 'KFC'
     expect(page).to have_content 'Resturant deleted successfully'
+  end
+
+  scenario 'dose not allow user to delete random resturant' do
+    visit('/resturants')
+    expect(page).not_to have_link 'Delete Burger King'
   end
 
 end
