@@ -12,4 +12,9 @@ describe User, type: :model do
     expect(user).to have_many :reviews
   end
 
+  it 'has many reviewed resturants' do
+    user = User.create(email:'test@test.com', password: 'testtest', password_confirmation: 'testtest')
+    expect(user).to have_many :reviewed_resturants
+  end
+
 end
