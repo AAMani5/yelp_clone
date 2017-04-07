@@ -4,4 +4,11 @@ class Resturant < ActiveRecord::Base
  -> { extending WithUserAssociationExtension },
   dependent: :destroy
   belongs_to :user
+
+  def average_rating
+    return 'N/A' if reviews.none?
+    reviews.inject(0) {|memo, review| memo + review.rating} / reviews.count
+  end
+
+
 end

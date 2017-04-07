@@ -1,6 +1,7 @@
 <% if @resturants.any? %>
   <% @resturants.each do |resturant| %>
   <h2><%= link_to resturant.name, resturant_path(resturant) %></h2>
+  <h3>Average rating: <%= resturant.average_rating.to_i %></h3>
   <% resturant.reviews.each do |review| %>
   <%= review.thoughts %>
   <% end %>
@@ -9,7 +10,7 @@
     <p><%= link_to "Edit #{resturant.name}", edit_resturant_path(resturant) %></p>
     <p><%= link_to "Delete #{resturant.name}", resturant_path(resturant), method: :delete %></p>
   <% end %>
-  
+
   <% if current_user && !current_user.has_reviewed?(resturant) %>
     <p><%= link_to "Review #{resturant.name}", new_resturant_review_path(resturant) %></p>
   <% end %>

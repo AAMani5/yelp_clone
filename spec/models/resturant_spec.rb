@@ -39,3 +39,30 @@ describe 'reviews' do
     end
   end
 end
+
+describe '#average_rating' do
+  context 'no reviews' do
+    it 'returns "N/A" when there are no reviews' do
+      resturant = Resturant.create(name: 'The Ivy')
+      expect(resturant.average_rating).to eq 'N/A'
+    end
+  end
+
+  context '1 review' do
+    it 'returns that rating' do
+      resturant = Resturant.create(name: 'The Ivy')
+      resturant.reviews.create(rating: 4)
+      expect(resturant.average_rating).to eq 4
+    end
+  end
+
+  context 'multiple reviews' do
+    it 'returns the average' do
+      resturant = Resturant.create(name: 'The Ivy')
+      resturant.reviews.create(rating: 1)
+      resturant.reviews.create(rating: 5)
+      expect(resturant.average_rating).to eq 3
+    end
+  end
+
+end
