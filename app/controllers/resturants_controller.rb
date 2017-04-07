@@ -11,8 +11,8 @@ class ResturantsController < ApplicationController
   end
 
   def create
-    @resturant = Resturant.new(name: params[:resturant][:name], description: params[:resturant][:description], user_id:current_user.id)
-    if @resturant.save
+    @resturant = current_user.resturants.create(resturant_params)
+    if @resturant.valid?
       redirect_to resturants_path
     else
       render 'new'
