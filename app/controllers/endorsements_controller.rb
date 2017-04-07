@@ -1,8 +1,9 @@
 class EndorsementsController < ApplicationController
 
   def new
-    @review = Review.find(params[:review_id])
-    @endorsement = Endorsement.new
+    # @review = Review.find(params[:review_id])
+    # @endorsement = Endorsement.new
+    create
   end
 
   def create
