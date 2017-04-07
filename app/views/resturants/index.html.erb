@@ -4,6 +4,8 @@
   <h3>Average rating: <%= resturant.average_rating.to_i %></h3>
   <% resturant.reviews.each do |review| %>
   <%= review.thoughts %>
+  <p><%= link_to "Endorse Review", new_review_endorsement_path(review) %></p>
+  <p><%= pluralize review.endorsements.count, 'endorsement' %></p>
   <% end %>
 
   <% if current_user && resturant.user_id == current_user.id %>

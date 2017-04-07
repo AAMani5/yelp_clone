@@ -45,6 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'selenium-webdriver', '~> 2.53'
 
 gem 'omniauth-facebook'
 
