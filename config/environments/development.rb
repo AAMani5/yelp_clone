@@ -1,4 +1,6 @@
 YelpClone::Application.configure do
+  # foe paperclip to use options from imagemagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
   # From devise installation - Ensure you have defined default url options in your environments files. Here
   # is an example of default_url_options appropriate for a development environment
   # in config/environments/development.rb:
