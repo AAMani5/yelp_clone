@@ -48,7 +48,7 @@ end
 
 gem 'devise'
 gem 'selenium-webdriver', '~> 2.53'
-
+gem 'paperclip'
 gem 'omniauth-facebook'
 
 group :test do
