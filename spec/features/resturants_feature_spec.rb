@@ -75,6 +75,18 @@ context 'creating resturants' do
     click_button('Sign up')
   end
 
+  scenario 'user can upload images when creating a new one' do
+    click_link 'Add a resturant'
+    expect(current_path).to eq '/resturants/new'
+    fill_in 'Name' , with: 'KFC'
+    fill_in 'Description', with: 'Tasty goodness'
+    attach_file('rest_image', File.absolute_path('/Users/ashwinimani/Downloads/missing.jpg'))
+    click_button 'Create Resturant'
+    expect(page).to have_content 'KFC'
+    expect(page).to have_xpath("//img[contains(@src,'missing.jpg')]")
+    expect(current_path).to eq '/resturants'
+  end
+
   scenario 'prompts user to fill out a form, then displays the new resturant' do
     click_link 'Add a resturant'
     expect(current_path).to eq '/resturants/new'
