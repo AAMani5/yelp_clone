@@ -1,7 +1,7 @@
 <% if @resturants.any? %>
   <% @resturants.each do |resturant| %>
   <h2><%= link_to resturant.name, resturant_path(resturant) %></h2>
-  <h3>Average rating: <%= resturant.average_rating.to_i %></h3>
+  <h3>Average rating: <%= star_rating(resturant.average_rating) %></h3>
   <%= image_tag resturant.image.url(:medium)%>
   <ul>
     <% resturant.reviews.each do |review| %>
