@@ -35,7 +35,7 @@
    background-color: #F4E7D3;
  }
 
- #resturants {
+ #signin, #signup {
    align-items: center;
    position: absolute;
    width: 500px;
@@ -45,5 +45,5 @@
    left: 50%;
    margin: -100px 0 0 -250px;
    color: #FAFAFA;
-   background: #313131;
+   background: #1F4E5F;
  }
